@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31815.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nibble.Domain", "Nibble.Domain\Nibble.Domain.csproj", "{5D216FCF-58D3-4C48-A07A-2A9B547FBC80}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nibble.Infrastructure", "Nibble.Infrastructure\Nibble.Infrastructure.csproj", "{DF8F52E7-45A1-4760-8B01-D3AB8A20EAC8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nibble.Services", "Nibble.Services\Nibble.Services.csproj", "{07D7E1E7-8606-449B-B20E-E0FD021D1717}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nibble.Contracts", "Nibble.Contracts\Nibble.Contracts.csproj", "{C8567313-3CE0-4F03-9B43-7D925E229064}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nibble.Helpers", "Nibble.Helpers\Nibble.Helpers.csproj", "{CF60DB9A-D554-46C1-B0E6-692F79BBFDCB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9CA0DCC7-5B21-40DE-9A55-116781E8EE7E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nibble.Domain.Tests", "Nibble.Domain.Tests\Nibble.Domain.Tests.csproj", "{D7A86CA8-796B-465F-BB14-13B6B1861037}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nibble.Api", "Nibble.Api\Nibble.Api.csproj", "{E550EC84-649C-426B-91E9-264EA3F4171A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D216FCF-58D3-4C48-A07A-2A9B547FBC80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D216FCF-58D3-4C48-A07A-2A9B547FBC80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D216FCF-58D3-4C48-A07A-2A9B547FBC80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D216FCF-58D3-4C48-A07A-2A9B547FBC80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF8F52E7-45A1-4760-8B01-D3AB8A20EAC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF8F52E7-45A1-4760-8B01-D3AB8A20EAC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF8F52E7-45A1-4760-8B01-D3AB8A20EAC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF8F52E7-45A1-4760-8B01-D3AB8A20EAC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D7E1E7-8606-449B-B20E-E0FD021D1717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D7E1E7-8606-449B-B20E-E0FD021D1717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D7E1E7-8606-449B-B20E-E0FD021D1717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D7E1E7-8606-449B-B20E-E0FD021D1717}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8567313-3CE0-4F03-9B43-7D925E229064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8567313-3CE0-4F03-9B43-7D925E229064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8567313-3CE0-4F03-9B43-7D925E229064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8567313-3CE0-4F03-9B43-7D925E229064}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF60DB9A-D554-46C1-B0E6-692F79BBFDCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF60DB9A-D554-46C1-B0E6-692F79BBFDCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF60DB9A-D554-46C1-B0E6-692F79BBFDCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF60DB9A-D554-46C1-B0E6-692F79BBFDCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7A86CA8-796B-465F-BB14-13B6B1861037}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7A86CA8-796B-465F-BB14-13B6B1861037}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7A86CA8-796B-465F-BB14-13B6B1861037}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7A86CA8-796B-465F-BB14-13B6B1861037}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E550EC84-649C-426B-91E9-264EA3F4171A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E550EC84-649C-426B-91E9-264EA3F4171A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E550EC84-649C-426B-91E9-264EA3F4171A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E550EC84-649C-426B-91E9-264EA3F4171A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D7A86CA8-796B-465F-BB14-13B6B1861037} = {9CA0DCC7-5B21-40DE-9A55-116781E8EE7E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25B07666-163D-49B3-BDB3-88336AE08D38}
+	EndGlobalSection
+EndGlobal
