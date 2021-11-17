@@ -1,4 +1,5 @@
-﻿using Nibble.Contracts.Commands;
+﻿using MediatR;
+using Nibble.Contracts.Commands;
 using Nibble.Domain.Aggregates;
 using Nibble.Domain.Exceptions;
 using Nibble.Infrastructure;
@@ -7,11 +8,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Nibble.Domain.Handlers
 {
-    public class CreateCustomerHandler : IHandle<CreateCustomer>
+    public class CreateCustomerHandler : IRequestHandler<CreateCustomer, IAggregate>
     {
         private readonly IDomainRepository _repository;
 
@@ -19,19 +21,20 @@ namespace Nibble.Domain.Handlers
         {
             _repository = repository;
         }
-        public async Task<IAggregate> HandleAsync(CreateCustomer command)
+
+        public async Task<IAggregate> Handle(CreateCustomer command, CancellationToken cancellationToken)
         {
             try
             {
                 await _repository.GetByIdAsync<CustomerAggregate>(command.Id);
                 throw new CustomerAlreadyExistsException(command.Id, "Customer Already Exists");
             }
-            catch(AggregateNotFoundException)
+            catch (AggregateNotFoundException)
             {
                 //is this the best approach - it seems good
             }
 
-            var customer =  CustomerAggregate.Create(command.Id, command.FirstName, command.LastName);
+            var customer = CustomerAggregate.Create(command.Id, command.FirstName, command.LastName);
             await _repository.SaveAsync(customer);
             return customer;
         }

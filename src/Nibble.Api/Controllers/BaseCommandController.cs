@@ -12,16 +12,11 @@ namespace Nibble.Api.Controllers
     [ApiController]
     public class BaseCommandController : ControllerBase
     {
-        protected IDomainRepository _repository;
+        protected IMediator _mediator;
 
-        protected BaseCommandController(IDomainRepository repository)
+        protected BaseCommandController(IMediator mediator)
         {
-            _repository = repository;
-        }
-
-        protected DomainEntry BuildDomainEntry()
-        {
-            return new DomainEntry(_repository);
+            _mediator = mediator;
         }
     }
 }

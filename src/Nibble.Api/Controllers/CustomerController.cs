@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Nibble.Contracts.Commands;
 using Nibble.Infrastructure;
@@ -10,26 +11,22 @@ namespace Nibble.Api.Controllers
     [ApiController]
     public class CustomerController : BaseCommandController
     {
-        public CustomerController(IDomainRepository repository) : base(repository)
+        public CustomerController(IMediator mediator) : base(mediator)
         {
 
         }
 
         [HttpPost("create")]
-        public IActionResult CreateCustomer(CreateCustomer command)
+        public async Task<IActionResult> CreateCustomer(CreateCustomer command)
         {
-            BuildDomainEntry()
-            .ExecuteCommand<CreateCustomer>(command);
-
+            await _mediator.Send(command);
             return Ok();
         }
 
         [HttpPost("address/create")]
-        public IActionResult CreateCustomer(AddPrimaryAddressToCustomer command)
+        public async Task<IActionResult> CreateCustomer(AddPrimaryAddressToCustomer command)
         {
-            BuildDomainEntry()
-            .ExecuteCommand<AddPrimaryAddressToCustomer>(command);
-
+            await _mediator.Send(command);
             return Ok();
         }
     }

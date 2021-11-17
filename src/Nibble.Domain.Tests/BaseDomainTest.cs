@@ -17,7 +17,6 @@ namespace Nibble.Domain.Tests
         InMemoryDomainRepository _repository;
         private Dictionary<Type, Type> _handlers; 
         private Dictionary<Guid, IEnumerable<IEvent>> _preEvents = new Dictionary<Guid, IEnumerable<IEvent>>();
-        private DomainEntry _domainEntry;
         public BaseDomainTest()
         {
             BuildHandlers();
@@ -30,10 +29,10 @@ namespace Nibble.Domain.Tests
             _handlers.Add(typeof(CreateCustomer), typeof(CreateCustomerHandler));
         }
 
-        private IHandle<T> GetHandler<T>(T command, params object[] constructurArguments) where T : Infrastructure.IRequest
+        private IRequestHandler<T, IAggregate> GetHandler<T>(T command, params object[] constructurArguments) where T : IRequest<IAggregate>
         {
             var handlerType = _handlers[typeof(T)];
-            var handler =  (IHandle<T>)Activator.CreateInstance(handlerType, constructurArguments);
+            var handler =  (IRequestHandler<T, IAggregate>)Activator.CreateInstance(handlerType, constructurArguments);
             return handler;
         }
 
@@ -46,25 +45,13 @@ namespace Nibble.Domain.Tests
             IdGenerator.GenerateId = null;
             _preEvents = new Dictionary<Guid, IEnumerable<IEvent>>();
         }
-        protected IMediator BuildMediator<TCommand, THandler>(TCommand command, THandler handler) 
-            where TCommand : Infrastructure.IRequest
-            where THandler : IHandle<TCommand>
-        {
-            var mediatR = new Mock<IMediator>();
-            
-            mediatR.Setup(m => m.Send(It.IsAny<TCommand>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(handler.HandleAsync(command));
-
-            return mediatR.Object;
-        }
 
         public async Task When<TCommand>(TCommand command) 
-            where TCommand : Infrastructure.IRequest
+            where TCommand : IRequest<IAggregate>
         {
             BuildRepository();
             var handler = GetHandler(command, _repository);
-            var mediatR = BuildMediator(command, handler);
-            await mediatR.Send(command);
+            await handler.Handle(command, CancellationToken.None);
         }
 
         protected void Then(params IEvent[] expectedEvents)
@@ -87,7 +74,7 @@ namespace Nibble.Domain.Tests
         }
         protected void WhenThrows<TException, TCommand>(TCommand command)
                 where TException : Exception
-                where TCommand : Infrastructure.IRequest
+                where TCommand : IRequest<IAggregate>
         {
             Assert.ThrowsAsync<TException>( async () =>  await When(command));
         }
