@@ -15,9 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nibble.Domain.Tests", "Nibb
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nibble.Api", "Nibble.Api\Nibble.Api.csproj", "{E550EC84-649C-426B-91E9-264EA3F4171A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nibble.EventWorker", "Nibble.EventWorker\Nibble.EventWorker.csproj", "{7F5FCCC0-F1B1-4BD7-87DB-F80C6E03412C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nibble.EventWorker", "Nibble.EventWorker\Nibble.EventWorker.csproj", "{7F5FCCC0-F1B1-4BD7-87DB-F80C6E03412C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nibble.EventWorker.Tests", "Nibble.EventWorker.Tests\Nibble.EventWorker.Tests.csproj", "{12EBD7B4-891B-4917-AAE3-480EEEB8D99E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nibble.EventWorker.Tests", "Nibble.EventWorker.Tests\Nibble.EventWorker.Tests.csproj", "{12EBD7B4-891B-4917-AAE3-480EEEB8D99E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nibble.ReadModels", "Nibble.ReadModels\Nibble.ReadModels.csproj", "{F9E13754-43D7-45C2-A711-0824A899E9F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{12EBD7B4-891B-4917-AAE3-480EEEB8D99E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12EBD7B4-891B-4917-AAE3-480EEEB8D99E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12EBD7B4-891B-4917-AAE3-480EEEB8D99E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9E13754-43D7-45C2-A711-0824A899E9F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9E13754-43D7-45C2-A711-0824A899E9F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9E13754-43D7-45C2-A711-0824A899E9F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9E13754-43D7-45C2-A711-0824A899E9F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

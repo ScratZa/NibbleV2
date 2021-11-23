@@ -16,5 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Nibble.Contracts\Nibble.Contracts.csproj" />
     <ProjectReference Include="..\Nibble.Infrastructure\Nibble.Infrastructure.csproj" />
+    <ProjectReference Include="..\Nibble.ReadModels\Nibble.ReadModels.csproj" />
   </ItemGroup>
 </Project>

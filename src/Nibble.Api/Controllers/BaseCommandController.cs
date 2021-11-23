@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using Neo4jClient;
 using Nibble.Domain;
 using Nibble.Infrastructure;
 using System.Threading;
@@ -12,11 +13,12 @@ namespace Nibble.Api.Controllers
     [ApiController]
     public class BaseCommandController : ControllerBase
     {
-        protected IMediator _mediator;
-
-        protected BaseCommandController(IMediator mediator)
+        protected readonly IMediator _mediator;
+        protected readonly IGraphClientFactory _queryFactory;
+        protected BaseCommandController(IMediator mediator, IGraphClientFactory factory)
         {
             _mediator = mediator;
+            _queryFactory = factory;
         }
     }
 }

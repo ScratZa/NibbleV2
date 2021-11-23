@@ -8,12 +8,14 @@
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Moq" Version="4.16.1" />
+    <PackageReference Include="Neo4jClient" Version="4.1.18" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Nibble.Contracts\Nibble.Contracts.csproj" />
     <ProjectReference Include="..\Nibble.Domain\Nibble.Domain.csproj" />
+    <ProjectReference Include="..\Nibble.ReadModels\Nibble.ReadModels.csproj" />
   </ItemGroup>
 
 </Project>

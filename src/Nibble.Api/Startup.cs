@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Neo4jClient;
 using Nibble.Contracts.Commands;
 using Nibble.Domain.Handlers;
 using Nibble.Infrastructure;
@@ -31,7 +32,11 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
+            services.AddSingleton<NeoServerConfiguration>(context => NeoServerConfiguration.GetConfigurationAsync(
+                            Configuration.GetValue<Uri>("Neo4j:Uri"),
+                            Configuration.GetValue<string>("Neo4j:Username"),
+                            Configuration.GetValue<string>("Neo4j:Password")).Result);
+            services.AddSingleton<IGraphClientFactory, GraphClientFactory>();
             services.AddMediatR(typeof(CreateCustomerHandler).Assembly,
                                 typeof(CreateCustomer).Assembly);
             services.AddSingleton<IEventConnectionManager, EventStoreConnectionManager>();
