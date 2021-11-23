@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using EventStore.Client;
+using MediatR;
 using Nibble.Contracts.Commands;
 using Nibble.Domain.Aggregates;
 using Nibble.Domain.Exceptions;
@@ -30,6 +31,10 @@ namespace Nibble.Domain.Handlers
                 throw new CustomerAlreadyExistsException(command.Id, "Customer Already Exists");
             }
             catch (AggregateNotFoundException)
+            {
+                //is this the best approach - it seems good
+            }
+            catch(StreamNotFoundException)
             {
                 //is this the best approach - it seems good
             }

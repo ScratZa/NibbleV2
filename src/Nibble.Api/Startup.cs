@@ -7,7 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Nibble.Contracts.Commands;
+using Nibble.Domain.Handlers;
 using Nibble.Infrastructure;
+using Nibble.Infrastructure.EventStore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,8 +31,12 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddMediatR(typeof(Startup));
-            services.AddSingleton<IDomainRepository, InMemoryDomainRepository>();
+
+            services.AddMediatR(typeof(CreateCustomerHandler).Assembly,
+                                typeof(CreateCustomer).Assembly);
+            services.AddSingleton<IEventConnectionManager, EventStoreConnectionManager>();
+            services.Configure<EventStoreOptions>(Configuration.GetSection("EventStore"));
+            services.AddSingleton<IDomainRepository, EventStoreDomainRepository>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
