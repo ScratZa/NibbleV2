@@ -12,7 +12,7 @@ namespace Nibble.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomerController : BaseCommandController
+    public class CustomerController : BaseController
     {
         public CustomerController(IMediator mediator, IGraphClientFactory queryFactory ) : base(mediator, queryFactory)
         {

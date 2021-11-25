@@ -11,11 +11,11 @@ namespace Nibble.Api.Controllers
 {
     [Route("command/api/[controller]")]
     [ApiController]
-    public class BaseCommandController : ControllerBase
+    public class BaseController : ControllerBase
     {
         protected readonly IMediator _mediator;
         protected readonly IGraphClientFactory _queryFactory;
-        protected BaseCommandController(IMediator mediator, IGraphClientFactory factory)
+        protected BaseController(IMediator mediator, IGraphClientFactory factory)
         {
             _mediator = mediator;
             _queryFactory = factory;

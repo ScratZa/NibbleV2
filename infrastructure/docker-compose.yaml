@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  eventstore:
+    container_name: esdb-docs
+    image: eventstore/eventstore:21.2.0-buster-slim
+    ports:
+      - '2113:2113'
+      - '1113:1113'
+    environment:
+      EVENTSTORE_EXT_HTTP_PORT: 2113
+      EVENTSTORE_EXT_TCP_PORT: 1113
+      EVENTSTORE_RUN_PROJECTIONS: all
+      EVENTSTORE_START_STANDARD_PROJECTIONS: 'true'
+      EVENTSTORE_INSECURE: 'true'
+  
+  neo4j:
+    image: neo4j:latest
+    hostname: neo4j
+    container_name: neo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - ./neo4j/plugins:/plugins
+    environment:
+      NEO4J_AUTH: neo4j/test
+      NEO4J_dbms_logs_debug_level: DEBUG

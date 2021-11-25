@@ -12,4 +12,9 @@
     <ProjectReference Include="..\Nibble.Infrastructure\Nibble.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commands\Nibbler\" />
+    <Folder Include="Events\Nibbler\" />
+  </ItemGroup>
+
 </Project>
