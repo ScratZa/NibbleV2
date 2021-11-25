@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-nibble-dev-213634-authRole",
+      "UnauthRoleArn": "arn:aws:iam::886616521292:role/amplify-nibble-dev-213634-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::886616521292:role/amplify-nibble-dev-213634-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-nibble-dev-213634-deployment",
+      "UnauthRoleName": "amplify-nibble-dev-213634-unauthRole",
+      "StackName": "amplify-nibble-dev-213634",
+      "StackId": "arn:aws:cloudformation:eu-west-1:886616521292:stack/amplify-nibble-dev-213634/06dbec50-4e27-11ec-9f08-0676caeb31c9",
+      "AmplifyAppId": "dcd16yu3cyzvl"
+    },
+    "categories": {
+      "auth": {
+        "nibbleecba82b3": {}
+      }
+    }
+  }
+}

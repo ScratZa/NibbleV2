@@ -10,9 +10,9 @@ export class AppComponent {
   public customer?: CustomerResponse;
 
   constructor(http: HttpClient) {
-    http.get<CustomerResponse>('/api/customer/d960f617-b22b-4c8b-ad03-0aab6e135704').subscribe(result => {
-      this.customer = result;
-    }, error => console.error(error));
+    // http.get<CustomerResponse>('/api/customer/d960f617-b22b-4c8b-ad03-0aab6e135704').subscribe(result => {
+    //   this.customer = result;
+    // }, error => console.error(error));
   }
 
   title = 'Nibble';
