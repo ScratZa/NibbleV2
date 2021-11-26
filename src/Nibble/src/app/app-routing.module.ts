@@ -2,13 +2,19 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AuthSigninComponent } from './auth/auth-signin/auth-signin.component';
+import { StandardAuthGuard } from './auth/standard-auth.guard';
 import { SplashComponent } from './splash.component';
 
 // Lazy load Auth Modules -> keep bundle small , not necessarily needed always
 const routes: Routes = [
-  {path:'splash', component: SplashComponent},
   {
-    path:'auth', component: AuthSigninComponent
+    path:'splash',
+    component: SplashComponent,
+    canActivate: [StandardAuthGuard]
+  },
+  {
+    path:'login',
+    component: AuthSigninComponent
   }
 ];
 

@@ -1,0 +1,12 @@
+/* Webfont: Cuciniere-Icons */@font-face {
+    font-family: 'CuciniereIcons';
+    src: url('Cuciniere-Icons.eot'); /* IE9 Compat Modes */
+    src: url('Cuciniere-Icons.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('Cuciniere-Icons.woff') format('woff'), /* Modern Browsers */
+         url('Cuciniere-Icons.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('Cuciniere-Icons.svg#Cuciniere-Icons') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+

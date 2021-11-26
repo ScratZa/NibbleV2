@@ -24,4 +24,6 @@ export class AuthSigninComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  signOut(): void{
+  }
 }

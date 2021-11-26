@@ -1,2 +1,22 @@
+<div class ="full bg-standard">
 <amplify-authenticator>
+  <ng-template
+    amplifySlot="authenticated"
+    let-user="user"
+    let-signOut="signOut"
+  >
+    <h2>Welcome, {{ user.username }}!</h2>
+    <button (click)="signOut()">Sign Out</button>
+  </ng-template>
+
+  <ng-template amplifySlot="header">
+    <div style="padding: var(--amplify-space-large); text-align: center">
+      <img
+        class="nibble-image"
+        alt="nibble logo"
+        src="../../../assets/images/LogoYellowSmall.jfif"
+      />
+    </div>
+  </ng-template>
 </amplify-authenticator>
+</div>

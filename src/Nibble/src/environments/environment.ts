@@ -5,9 +5,9 @@
 export const environment = {
   production: false,
 
-  // Cognito
-  CognitoPoolId : '',
-  CognitoClientId: ''
+  mapbox: {
+    accessToken: 'pk.eyJ1Ijoic2NyYXR6YSIsImEiOiJja3dnZ2gzdTUwbWJ3MndudnFuenhrMHdyIn0.6FxYzqpkeICz1E-PP-OIkw'
+  }
 };
 
 /*

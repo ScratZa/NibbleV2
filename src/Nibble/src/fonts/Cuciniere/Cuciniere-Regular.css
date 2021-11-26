@@ -1,0 +1,12 @@
+/* Webfont: Cuciniere-Regular */@font-face {
+    font-family: 'Cuciniere';
+    src: url('Cuciniere-Regular.eot'); /* IE9 Compat Modes */
+    src: url('Cuciniere-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('Cuciniere-Regular.woff') format('woff'), /* Modern Browsers */
+         url('Cuciniere-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('Cuciniere-Regular.svg#Cuciniere-Regular') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
