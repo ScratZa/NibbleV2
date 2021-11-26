@@ -18,6 +18,7 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@aws-amplify/ui-angular": "^2.0.2",
     "amazon-cognito-identity-js": "^5.2.3",
     "aws-amplify": "^4.3.8",
     "jest-editor-support": "*",
