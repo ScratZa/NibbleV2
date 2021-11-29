@@ -8,8 +8,8 @@ import { SplashComponent } from './splash.component';
 // Lazy load Auth Modules -> keep bundle small , not necessarily needed always
 const routes: Routes = [
   {
-    path:'splash',
-    component: SplashComponent,
+    path:'',
+    loadChildren: () => import('./dashboard/dashboard.module').then(m=> m.DashboardModule),
     canActivate: [StandardAuthGuard]
   },
   {

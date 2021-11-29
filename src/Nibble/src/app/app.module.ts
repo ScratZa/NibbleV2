@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SplashComponent } from './splash.component';
 import { AuthSigninComponent } from './auth/auth-signin/auth-signin.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AuthSigninComponent } from './auth/auth-signin/auth-signin.component';
     SplashComponent
   ],
   imports: [
-    AmplifyAuthenticatorModule,BrowserModule, HttpClientModule, AppRoutingModule
+    AmplifyAuthenticatorModule,BrowserModule, HttpClientModule, AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
