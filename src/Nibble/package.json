@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "~13.0.2",
     "@angular/router": "~13.0.2",
     "@aws-amplify/ui-angular": "^2.0.2",
+    "@mapbox/mapbox-sdk": "^0.13.2",
+    "@types/mapbox__mapbox-sdk": "^0.13.2",
     "@types/mapbox-gl": "^2.4.2",
     "amazon-cognito-identity-js": "^5.2.3",
     "aws-amplify": "^4.3.8",

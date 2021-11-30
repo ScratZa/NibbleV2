@@ -33,6 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatGridListModule,
     MatCardModule,
     MatAutocompleteModule,
+    ReactiveFormsModule,
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
