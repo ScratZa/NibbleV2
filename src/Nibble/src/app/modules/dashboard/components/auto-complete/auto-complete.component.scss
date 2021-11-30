@@ -1,0 +1,14 @@
+.autocomplete-container{
+  padding:3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10rem;
+}
+
+.autocomplete{
+  grid-column: 1/2;
+}
+
+.example-full-width {
+  width: 100%;
+}
