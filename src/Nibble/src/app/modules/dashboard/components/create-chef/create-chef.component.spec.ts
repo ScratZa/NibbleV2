@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AutoCompleteComponent } from './auto-complete.component';
+import { CreateChefComponent } from './create-chef.component';
 
 describe('AutoCompleteComponent', () => {
-  let component: AutoCompleteComponent;
-  let fixture: ComponentFixture<AutoCompleteComponent>;
+  let component: CreateChefComponent;
+  let fixture: ComponentFixture<CreateChefComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AutoCompleteComponent ]
+      declarations: [ CreateChefComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AutoCompleteComponent);
+    fixture = TestBed.createComponent(CreateChefComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,62 @@
+
+<div class ="autocomplete-container">
+<form class="example-form " [formGroup]="form" (ngSubmit)="formSubmit()">
+<div class = "autocomplete">
+  <h1>Create Chef</h1>
+    <mat-form-field class="input__firstName" appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input type="text"
+             placeholder="First Name"
+             aria-label="First Name"
+             matInput
+             formControlName="firstName">
+
+    </mat-form-field>
+
+    <mat-form-field class="input__lastName" appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input type="text"
+             placeholder="Last Name"
+             aria-label="Last Name"
+             matInput
+             formControlName="lastName">
+
+    </mat-form-field>
+
+    <mat-form-field class="input__cookingStyle" appearance="fill">
+      <mat-label>Cooking Style</mat-label>
+      <input type="text"
+             placeholder="Pick your Cooking Style"
+             aria-label="Cooking Style"
+             matInput
+             formControlName="cookingStyle"
+             [matAutocomplete]="autoStyle">
+
+      <mat-autocomplete autoActiveFirstOption #autoStyle="matAutocomplete" panelWidth="370px">
+        <mat-option *ngFor="let style of filteredStyles | async " [value]="style">
+          {{style}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field class="input__address" appearance="fill">
+      <mat-label>Address</mat-label>
+      <input type="text"
+             placeholder="Pick one"
+             aria-label="Address"
+             matInput
+             formControlName="addr"
+             [matAutocomplete]="auto">
+
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" panelWidth="370px"
+      (optionSelected)="updateSelectedAddress($event)">
+        <mat-option *ngFor="let address of addresses | async" [value]="address" >
+          {{address.place_name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <button class="input__button"  type="submit" mat-raised-button color="primary" [disabled]="!form.valid || !form.dirty">Create</button>
+  </div>
+  </form>
+</div>

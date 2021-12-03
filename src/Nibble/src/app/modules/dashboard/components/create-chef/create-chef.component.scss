@@ -1,0 +1,51 @@
+.autocomplete-container{
+  background-color:#fff;
+  padding:3rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10rem;
+}
+
+.autocomplete{
+  grid-column: 2/5;
+  display: grid;
+  grid-template-areas:
+  "header header"
+  "fn ln"
+  "addr addr"
+  "cs none"
+  "button button";
+  grid-gap:.5rem;
+  align-items:baseline;
+  border-radius: 3px;
+  padding:1rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+  > h1{
+    grid-area: header;
+    justify-self:  center;
+  }
+}
+
+.input{
+  &__lastName{
+    grid-area: ln;
+  }
+  &__firstName{
+    grid-area: fn;
+  }
+  &__address{
+    grid-area: addr;
+  }
+  &__cookingStyle{
+    grid-area: cs;
+  }
+  &__button{
+    grid-area: button;
+    max-height:3rem;
+  }
+}
+
+.full-width {
+  width: 100%;
+}

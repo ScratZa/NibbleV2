@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
+import { CreateChefComponent } from './components/create-chef/create-chef.component';
 import { DashboardComponent } from './dashboard.component';
 
 const routes: Routes = [
@@ -9,7 +9,7 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path:'ac', component: AutoCompleteComponent
+        path:'ac', component: CreateChefComponent
       }
     ]
   }

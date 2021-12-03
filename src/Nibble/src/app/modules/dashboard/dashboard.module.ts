@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import * as sharedModule from '../../shared/shared.module';
+import { SharedModule} from '../../shared/shared.module';
 import { DashboardComponent } from './dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
@@ -14,25 +14,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
+import { CreateChefComponent } from './components/create-chef/create-chef.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ChefListComponent } from './components/chef-list/chef-list.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, AutoCompleteComponent],
+  declarations: [DashboardComponent, CreateChefComponent, ChefListComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     DashboardRoutingModule,
-    sharedModule.SharedModule,
+    SharedModule,
     MatGridListModule,
     MatCardModule,
     MatAutocompleteModule,
+    MatSnackBarModule,
     ReactiveFormsModule,
     MatMenuModule,
     MatFormFieldModule,
