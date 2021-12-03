@@ -12,11 +12,11 @@ namespace Nibble.Infrastructure
     public class EventStoreDomainRepository : BaseDomainRepository
     {
         private IEventConnectionManager _connectionManager;
-        
         public EventStoreDomainRepository(IEventConnectionManager connectionManager)
         {
             _connectionManager = connectionManager;
         }
+
 
         private string AggregateStreamName(Guid id, StreamType Category)
         {

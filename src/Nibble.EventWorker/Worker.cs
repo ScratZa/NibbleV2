@@ -2,10 +2,12 @@ using EventStore.Client;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Nibble.Contracts.Events;
+using Nibble.Contracts.Events.Chef;
 using Nibble.EventWorker.EventStore;
 using Nibble.EventWorker.ReadModels;
 using Nibble.EventWorker.ReadModelStores;
 using Nibble.Infrastructure;
+using Nibble.ReadModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +24,7 @@ namespace Nibble.EventWorker
         private readonly IEventClientManager _eventClientManager;
         private readonly IRouter _router;
         private readonly ICustomerGraphStore _customerStore;
-        public Worker(ILogger<Worker> logger, IEventClientManager client, IRouter router, ICustomerGraphStore customerStore)
+        public Worker(ILogger<Worker> logger, IEventClientManager client, IRouter router, ICustomerGraphStore customerStore, IChefGraphStore chefStore)
         {
             _eventClientManager = client;
             _logger = logger;
@@ -35,8 +37,26 @@ namespace Nibble.EventWorker
         {
             _router.Add<CustomerCreated>(HandleCustomerCreated);
             _router.Add<PrimaryAddressAdded>(HandleAddressAdded);
+            _router.Add<ChefCreated>(HandleChefCreated);
         }
+        private async Task HandleChefCreated(ChefCreated obj)
+        {
+            var chef = new Chef
+            {
+                FirstName = obj.FirstName,
+                LastName = obj.LastName,
+                Address = obj.AddressName
+            };
 
+            try
+            {
+                await _customerStore.AddCustomer(customer);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
         private async Task HandleCustomerCreated(CustomerCreated obj)
         {
             var customer = new Customer

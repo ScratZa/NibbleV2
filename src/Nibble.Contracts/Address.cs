@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nibble.Domain.ValueObjects
+namespace Nibble.Contracts
 {
     public class Address
     {
-        public string FriendlyName { get; set; }
         public string AddressName { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
-
+        public string AddressDisplayName { get; set; }
+        public double[] Point { get; set; }
     }
 }
