@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, NgForm, ValidatorFn, Validators } from '@angular/forms';
 import { GeocodeFeature, GeocodeResponse } from '@mapbox/mapbox-sdk/services/geocoding';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map, startWith, switchMap } from 'rxjs/operators';
@@ -24,7 +24,9 @@ function _styleValidator(validValues: string[]): ValidatorFn {
   templateUrl: './create-chef.component.html',
   styleUrls: ['./create-chef.component.scss']
 })
+
 export class CreateChefComponent implements OnInit {
+  @ViewChild('formDirective') private formDirective: NgForm;
   form : FormGroup;
   addresses: Observable<GeocodeFeature[]>;
   selectedAddress: GeocodeFeature;
@@ -72,6 +74,8 @@ export class CreateChefComponent implements OnInit {
     .subscribe(
       ((data: CreateChefResponse) => {
         this.snackBar.open(`Chef Created with Id ${data.id}`, 'Dismiss');
+        this.form.reset();
+        this.formDirective.resetForm();
       })
     )
   }

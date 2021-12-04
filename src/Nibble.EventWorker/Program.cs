@@ -35,6 +35,7 @@ namespace Nibble.EventWorker
                         applicationConfig.GetValue<string>("Neo4j:Password")).Result);
                     services.AddSingleton<IGraphClientFactory, GraphClientFactory>();
                     services.AddTransient<ICustomerGraphStore, Neo4jCustomerGraphStore>();
+                    services.AddTransient<IChefStore, GraphChefStore>();
                     services.Configure<EventStoreOptions>(applicationConfig.GetSection("EventStore"));
                     services.AddSingleton<IEventClientManager, EventStoreClientManager>();
                     services.AddTransient<IReadModelStore, ConsoleStore>();

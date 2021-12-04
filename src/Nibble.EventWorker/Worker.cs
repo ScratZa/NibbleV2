@@ -24,12 +24,14 @@ namespace Nibble.EventWorker
         private readonly IEventClientManager _eventClientManager;
         private readonly IRouter _router;
         private readonly ICustomerGraphStore _customerStore;
-        public Worker(ILogger<Worker> logger, IEventClientManager client, IRouter router, ICustomerGraphStore customerStore, IChefGraphStore chefStore)
+        private readonly IChefStore _chefStore;
+        public Worker(ILogger<Worker> logger, IEventClientManager client, IRouter router, ICustomerGraphStore customerStore, IChefStore chefStore)
         {
             _eventClientManager = client;
             _logger = logger;
             _router = router;
             _customerStore = customerStore;
+            _chefStore = chefStore;
             SetupRouteHandlers();
         }
 
@@ -43,14 +45,18 @@ namespace Nibble.EventWorker
         {
             var chef = new Chef
             {
+                Id = obj.Id,
                 FirstName = obj.FirstName,
                 LastName = obj.LastName,
-                Address = obj.AddressName
+                Address = obj.AddressName,
+                Latitude = obj.Latitude,
+                Longitude = obj.Longitude,
+                CookingStyle = obj.CookingStyle
             };
 
             try
             {
-                await _customerStore.AddCustomer(customer);
+                await _chefStore.AddChef(chef);
             }
             catch (Exception ex)
             {
@@ -105,30 +111,6 @@ namespace Nibble.EventWorker
                 Console.WriteLine("Healthy");
                 await Task.Delay(10000);
             }
-        }
-
-        private async Task SendMessageToStore()
-        {
-            var connection = _eventClientManager.GetConnection();
-            var evt = new CustomerCreated
-            {
-                Id = Guid.NewGuid(),
-                FirstName = "John",
-                LastName = "Stones"
-            };
-            var evtMetadata = new Dictionary<string, string>()
-            {
-                {EventSerializer.EventTypeKey, evt.GetType().AssemblyQualifiedName }
-            };
-
-            var eventData = new EventData(
-                Uuid.NewUuid(),
-                "Customer",
-                JsonSerializer.SerializeToUtf8Bytes(evt),
-                JsonSerializer.SerializeToUtf8Bytes(evtMetadata)
-            );
-
-           await connection.AppendToStreamAsync("customer",StreamState.Any, new [] { eventData });
         }
 
         private async Task ConnectToEventStreams()

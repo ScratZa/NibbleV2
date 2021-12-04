@@ -1,6 +1,6 @@
 
 <div class ="autocomplete-container">
-<form class="example-form " [formGroup]="form" (ngSubmit)="formSubmit()">
+<form class="example-form " [formGroup]="form" #formDirective="ngForm"  (ngSubmit)="formSubmit()">
 <div class = "autocomplete">
   <h1>Create Chef</h1>
     <mat-form-field class="input__firstName" appearance="fill">

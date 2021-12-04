@@ -12,6 +12,9 @@ namespace Nibble.ReadModels
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public string CookingStyle { get; set; }
         public Guid Id { get; set; }
     }
 }

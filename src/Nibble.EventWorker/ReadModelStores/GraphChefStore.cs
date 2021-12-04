@@ -29,14 +29,20 @@ namespace Nibble.EventWorker.ReadModelStores
             }
         }
 
-        public Task<Chef> GetChef(Guid id)
+        public async Task<Chef> GetChef(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Task AddChef(Chef chef)
+        public async Task AddChef(Chef chef)
         {
-            throw new NotImplementedException();
+            using (var _graphClient = await _factory.CreateAsync())
+            {
+                await _graphClient.Cypher
+                    .Create("(chef:Chef $newChef)")
+                    .WithParam("newChef", chef)
+                    .ExecuteWithoutResultsAsync();
+            }
         }
     }
 }
