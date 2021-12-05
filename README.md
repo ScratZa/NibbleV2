@@ -7,9 +7,9 @@ The application itself is built using C# and Net 5 for the backends with Angular
 - [1. Overview](#1-overview)
 - [2. Application Overview](#2-application-overview)
 - [3. Running the application](#3-running-the-application)
-  - [Eventstore and Neo4j](#eventstore-and-neo4j)
-  - [Web Api (Net5)](#web-api-net5)
-  - [Front End](#front-end)
+  - [3.1. Eventstore and Neo4j](#31-eventstore-and-neo4j)
+  - [3.2. Web Api (Net5)](#32-web-api-net5)
+  - [3.3. Front End](#33-front-end)
 - [4. Sofware Architecture](#4-sofware-architecture)
   - [4.1. Backend](#41-backend)
   - [4.2. Frontend](#42-frontend)
@@ -32,15 +32,15 @@ The query API's go directly to the database without the need for any complex bus
 ![GetCommand](docs/assets/0.CustomerGet.png)
 
 # 3. Running the application
-## Eventstore and Neo4j
+## 3.1. Eventstore and Neo4j
 The application requires Eventstore and Neo4j to be running locally. There is  docker compose thats sitting here [Infrastructure/docker-compose](infrastructure/docker-compose.yaml)
 
 run `docker-compose up` in this directory to get both databases up and running.
 
-## Web Api (Net5)
+## 3.2. Web Api (Net5)
 In order to run the application open the [Solution File](src/Nibble.sln) in Visual Studio (or whatever IDE) and make sure both Nibble.Api and Nibble.EventWorker are setup as starter projects (If u want to run the Front end aswell add Nibble as a startup project - I tend to use VSCode for anything Front end related so ill be running it from there.)
 
-## Front End
+## 3.3. Front End
 The frontend is a straight forward angular app in [src/Nibble](src/Nibble) run an ng serve and you should be good to go - theres a standard [README](src/Nibble/README.md) in the FE folder for more information. 
 
 In order to check that everything is up and running. 
