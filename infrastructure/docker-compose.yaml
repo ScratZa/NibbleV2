@@ -13,6 +13,8 @@ services:
       EVENTSTORE_RUN_PROJECTIONS: all
       EVENTSTORE_START_STANDARD_PROJECTIONS: 'true'
       EVENTSTORE_INSECURE: 'true'
+      EVENTSTORE_ENABLE_ATOM_PUB_OVER_HTTP: 'true'
+
   
   neo4j:
     image: neo4j:latest
