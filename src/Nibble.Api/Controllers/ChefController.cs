@@ -41,8 +41,13 @@ namespace Nibble.Api.Controllers
             {
                 var response = await client.Cypher
                     .Match("(chef:Chef)")
+                    .OptionalMatch("(chef) -[r:COOKS]->(meal:Meal)")
                     .Where((Chef chef) => chef.Id == id)
-                    .ReturnDistinct((chef) => chef.As<Chef>())
+                    .ReturnDistinct((chef, meal) => new
+                    {
+                       Chef = chef.As<Chef>(),
+                       Meals = meal.CollectAs<Meal>()
+                    })
                     .ResultsAsync;
 
                 return Ok(response.Single());

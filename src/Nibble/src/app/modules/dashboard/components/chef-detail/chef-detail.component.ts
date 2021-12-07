@@ -9,7 +9,8 @@ import { DataRequestError } from 'src/app/shared/models/data-request-error';
   styleUrls: ['./chef-detail.component.scss']
 })
 export class ChefDetailComponent implements OnInit {
-  chef:ChefDetails;
+  chefDetails:ChefDetails;
+  displayedColumns: string[] = ["name", "description", "price"]
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -19,7 +20,8 @@ export class ChefDetailComponent implements OnInit {
       console.log(resolvedData)
     }
     else{
-      this.chef = resolvedData
+      this.chefDetails = resolvedData
+      console.log(resolvedData)
     }
 
   }

@@ -15,7 +15,6 @@ namespace Nibble.ReadModels
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public string CookingStyle { get; set; }
-        public List<Meal> Meals {get; set;}
         public Guid Id { get; set; }
     }
 }

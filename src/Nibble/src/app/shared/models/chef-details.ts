@@ -1,4 +1,9 @@
 export class ChefDetails{
+  chef: Chef;
+  meals: Meal[];
+}
+
+export class Chef{
   id: string;
   firstName: string;
   lastName: string;
@@ -6,4 +11,11 @@ export class ChefDetails{
   latitude: number;
   cookingStyle: string;
   longitude: number;
+}
+
+export class Meal{
+  id: string;
+  name: string;
+  description: string;
+  price: number;
 }

@@ -1,1 +1,36 @@
-<p>{{chef | json}}</p>
+<div class = "details--container">
+  <div class ="details--item"><span class ="bld">Name:</span><span class="std">{{chefDetails.chef.firstName}}</span></div>
+  <div class ="details--item"><span class ="bld">Surname:</span><span class="std">{{chefDetails.chef.lastName}}</span></div>
+  <div class ="details--item"><span class ="bld">Cooking Style:</span><span class="std">{{chefDetails.chef.cookingStyle}}</span></div>
+</div>
+<div class = "tabs--container">
+<mat-tab-group mat-stretch-tabs class="tabs--group mat-elevation-z8">
+  <mat-tab label="Meals">
+    <mat-table [dataSource]="chefDetails.meals" class="table">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let meal"> {{meal.name}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let meal"> {{meal.description}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let meal">{{meal.price | currency}}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </mat-table>
+  </mat-tab>
+  <mat-tab label="Address">
+    <div class ="address--item"><span class ="bld">Address: </span><span class="std">{{chefDetails.chef.address}}</span></div>
+    <div class ="address--item"><span class ="bld">Latitude: </span><span class="std">{{chefDetails.chef.latitude}}</span></div>
+    <div class ="address--item"><span class ="bld">Longitude: </span><span class="std">{{chefDetails.chef.longitude}}</span></div>
+  </mat-tab>
+</mat-tab-group>
+</div>
