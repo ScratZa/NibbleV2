@@ -5,6 +5,7 @@ using Moq;
 using Neo4jClient;
 using Nibble.Domain;
 using Nibble.Infrastructure;
+using System;
 using System.Threading;
 
 namespace Nibble.Api.Controllers
@@ -19,6 +20,15 @@ namespace Nibble.Api.Controllers
         {
             _mediator = mediator;
             _queryFactory = factory;
+        }
+
+        protected Guid GetChefId()
+        {
+            Request.Headers.TryGetValue("ChefId", out var chefIdString);
+            if(Guid.TryParse(chefIdString, out var chefId))
+                return chefId;
+
+            throw new BadHttpRequestException("Missing Value for Chef Id");
         }
     }
 }

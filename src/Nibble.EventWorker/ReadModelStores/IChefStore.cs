@@ -8,5 +8,7 @@ namespace Nibble.EventWorker
     {
         public Task<Chef> GetChef(Guid id);
         public Task AddChef(Chef chef);
+        public Task AddMeal(Guid id, Meal meal);
+        public Task RemoveMeal(Guid id, Guid mealId);
     }
 }

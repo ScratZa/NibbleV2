@@ -12,5 +12,6 @@ namespace Nibble.ReadModels
         public Guid Id { get; set;}
         public string Name { get; set; }
         public string CookingStyle { get; set; }
+        public string AddressDisplayName { get; set; }
     }
 }

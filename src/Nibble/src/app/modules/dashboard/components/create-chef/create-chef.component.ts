@@ -9,6 +9,7 @@ import { CreateChefRequest } from 'src/app/shared/models/create-chef-request';
 import { ChefService } from 'src/app/shared/services/chef.service';
 import { CreateChefResponse } from 'src/app/shared/models/create-chef-response';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataRequestError } from 'src/app/shared/models/data-request-error';
 
 function _styleValidator(validValues: string[]): ValidatorFn {
   return (formControl: AbstractControl) : {[key:string]: boolean} | null =>{
@@ -76,7 +77,10 @@ export class CreateChefComponent implements OnInit {
         this.snackBar.open(`Chef Created with Id ${data.id}`, 'Dismiss');
         this.form.reset();
         this.formDirective.resetForm();
-      })
+      }),
+      (err: DataRequestError) => {
+        console.log(err.errorMessage)
+      }
     )
   }
 

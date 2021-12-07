@@ -1,1 +1,28 @@
-<p>chef-list works!</p>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 chef-table">
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let chef"> {{chef.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Address">
+    <th mat-header-cell *matHeaderCellDef> Address </th>
+    <td mat-cell *matCellDef="let chef"> {{chef.addressDisplayName}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Style">
+    <th mat-header-cell *matHeaderCellDef> Cooking Style </th>
+    <td mat-cell *matCellDef="let chef"> {{chef.cookingStyle}} </td>
+  </ng-container>
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let chef"> <a routerLink="/chef/{{chef.id}}">{{chef.id}}</a></td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

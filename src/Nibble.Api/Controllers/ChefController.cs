@@ -8,6 +8,7 @@ using Nibble.ReadModels;
 using System;
 using System.Threading.Tasks;
 using Nibble.Mappers;
+using System.Linq;
 
 namespace Nibble.Api.Controllers
 {
@@ -41,16 +42,32 @@ namespace Nibble.Api.Controllers
                 var response = await client.Cypher
                     .Match("(chef:Chef)")
                     .Where((Chef chef) => chef.Id == id)
-                    .Return((chef) => chef.As<Chef>())
+                    .ReturnDistinct((chef) => chef.As<Chef>())
                     .ResultsAsync;
 
-                return Ok(response);
+                return Ok(response.Single());
             }
         }
 
         [HttpPost("create")]
         public async Task<IActionResult> CreateChef(CreateChef command)
         {
+            var response = await _mediator.Send(command);
+            return Ok(response);
+        }
+
+        [HttpPost("meal/add")]
+        public async Task<IActionResult> AddMeal([FromBody] AddMealToChef command)
+        {
+            command.ChefId = GetChefId();
+            var response = await _mediator.Send(command);
+            return Ok(response);
+        }
+
+        [HttpPost("meal/remove")]
+        public async Task<IActionResult> RemoveMeal([FromBody] RemoveMealFromChef command)
+        {
+            command.ChefId = GetChefId();
             var response = await _mediator.Send(command);
             return Ok(response);
         }

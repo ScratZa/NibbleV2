@@ -40,6 +40,38 @@ namespace Nibble.EventWorker
             _router.Add<CustomerCreated>(HandleCustomerCreated);
             _router.Add<PrimaryAddressAdded>(HandleAddressAdded);
             _router.Add<ChefCreated>(HandleChefCreated);
+            _router.Add<MealAdded>(HandleMealAdded);
+            _router.Add<MealRemoved>(HandleMealRemoved);
+        }
+        private async Task HandleMealAdded(MealAdded obj)
+        {
+            var meal = new Meal
+            {
+                Id = obj.Id,
+                Name = obj.Name,
+                Description = obj.Description,
+                Price = obj.Price,
+            };
+
+            try
+            {
+                await _chefStore.AddMeal(obj.ChefId, meal);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+        private async Task HandleMealRemoved(MealRemoved obj)
+        {
+            try
+            {
+                await _chefStore.RemoveMeal(obj.ChefId, obj.Id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
         private async Task HandleChefCreated(ChefCreated obj)
         {

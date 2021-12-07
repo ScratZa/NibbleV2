@@ -48,7 +48,7 @@ namespace Nibble.Domain.Handlers
                 //is this the best approach - it seems good
             }
 
-            var customer = ChefAggregate.Create(
+            var chef = ChefAggregate.Create(
                 command.Id,
                 command.FirstName,
                 command.LastName,
@@ -56,8 +56,9 @@ namespace Nibble.Domain.Handlers
                 command.Address.AddressName,
                 command.Address.Point[0],
                 command.Address.Point[1]);
-            await _repository.SaveAsync(customer);
-            return customer;
+
+            await _repository.SaveAsync(chef);
+            return chef;
         }
     }
 }

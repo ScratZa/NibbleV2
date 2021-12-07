@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { SharedModule} from '../../shared/shared.module';
 import { DashboardComponent } from './dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
@@ -23,28 +22,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChefListComponent } from './components/chef-list/chef-list.component';
+import { MaterialModule } from 'src/app/shared/modules/material.module';
+import { ChefAdminComponent } from './components/chef-admin/chef-admin.component';
+import { ChefDetailComponent } from './components/chef-detail/chef-detail.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, CreateChefComponent, ChefListComponent],
+  declarations: [DashboardComponent, CreateChefComponent, ChefListComponent, ChefAdminComponent, ChefDetailComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     DashboardRoutingModule,
-    SharedModule,
-    MatGridListModule,
-    MatCardModule,
-    MatAutocompleteModule,
-    MatSnackBarModule,
-    ReactiveFormsModule,
-    MatMenuModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    MatButtonModule,
+    MaterialModule,
     LayoutModule,
   ]
 })

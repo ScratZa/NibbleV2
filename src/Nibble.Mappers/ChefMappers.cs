@@ -19,6 +19,7 @@ namespace Nibble.Mappers
                 Name = chef.FirstName + " " + chef.LastName,
                 Id = chef.Id,
                 CookingStyle = chef.CookingStyle,
+                AddressDisplayName = chef.Address  
             };
         }
     }

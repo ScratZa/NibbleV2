@@ -44,5 +44,32 @@ namespace Nibble.EventWorker.ReadModelStores
                     .ExecuteWithoutResultsAsync();
             }
         }
+
+        public async Task AddMeal(Guid id, Meal meal)
+        {
+            using (var _graphClient = await _factory.CreateAsync())
+            {
+                await _graphClient.Cypher
+                    .Match("(chef:Chef)")
+                    .Where((Chef chef) => chef.Id == id)
+                    .Create("(meal:Meal $newMeal)")
+                    .WithParam("newMeal",meal)
+                    .Create("(chef)-[:COOKS]->(meal)")
+                    .ExecuteWithoutResultsAsync();
+            }
+        }
+
+        public async Task RemoveMeal(Guid id, Guid mealId)
+        {
+            using (var _graphClient = await _factory.CreateAsync())
+            {
+                await _graphClient.Cypher
+                    .OptionalMatch("(chef:Chef)-[r:COOKS]->(meal Meal)")
+                    .Where((Chef chef) => chef.Id == id)
+                    .AndWhere((Meal meal)=> meal.Id == mealId)
+                    .Delete("r,meal")
+                    .ExecuteWithoutResultsAsync();
+            }
+        }
     }
 }
